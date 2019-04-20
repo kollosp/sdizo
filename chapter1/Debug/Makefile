@@ -51,11 +51,15 @@ OBJECTS_DIR   = ./
 SOURCES       = ../chapter1/main.cpp \
 		../chapter1/MyVector.cpp \
 		../chapter1/MyList.cpp \
-		../chapter1/MyHeap.cpp 
+		../chapter1/MyHeap.cpp \
+		../chapter1/MyRedBlackTree.cpp \
+		../chapter1/Timer.cpp 
 OBJECTS       = main.o \
 		MyVector.o \
 		MyList.o \
-		MyHeap.o
+		MyHeap.o \
+		MyRedBlackTree.o \
+		Timer.o
 DIST          = ../../../../Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.7/gcc_64/mkspecs/common/unix.conf \
 		../../../../Qt/5.7/gcc_64/mkspecs/common/linux.conf \
@@ -187,6 +191,7 @@ DIST          = ../../../../Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.7/gcc_64/mkspecs/features/qt_config.prf \
 		../../../../Qt/5.7/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../../Qt/5.7/gcc_64/mkspecs/features/spec_post.prf \
+		../chapter1/.qmake.stash \
 		../../../../Qt/5.7/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt/5.7/gcc_64/mkspecs/features/toolchain.prf \
 		../../../../Qt/5.7/gcc_64/mkspecs/features/default_pre.prf \
@@ -201,10 +206,14 @@ DIST          = ../../../../Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.7/gcc_64/mkspecs/features/lex.prf \
 		../chapter1/chapter1.pro MyVector.h \
 		MyList.h \
-		MyHeap.h ../chapter1/main.cpp \
+		MyHeap.h \
+		MyRedBlackTree.h \
+		Timer.h ../chapter1/main.cpp \
 		../chapter1/MyVector.cpp \
 		../chapter1/MyList.cpp \
-		../chapter1/MyHeap.cpp
+		../chapter1/MyHeap.cpp \
+		../chapter1/MyRedBlackTree.cpp \
+		../chapter1/Timer.cpp
 QMAKE_TARGET  = chapter1
 DESTDIR       = 
 TARGET        = chapter1
@@ -347,6 +356,7 @@ Makefile: ../chapter1/chapter1.pro ../../../../Qt/5.7/gcc_64/mkspecs/linux-g++/q
 		../../../../Qt/5.7/gcc_64/mkspecs/features/qt_config.prf \
 		../../../../Qt/5.7/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../../Qt/5.7/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../Qt/5.7/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt/5.7/gcc_64/mkspecs/features/toolchain.prf \
 		../../../../Qt/5.7/gcc_64/mkspecs/features/default_pre.prf \
@@ -492,6 +502,7 @@ Makefile: ../chapter1/chapter1.pro ../../../../Qt/5.7/gcc_64/mkspecs/linux-g++/q
 ../../../../Qt/5.7/gcc_64/mkspecs/features/qt_config.prf:
 ../../../../Qt/5.7/gcc_64/mkspecs/linux-g++/qmake.conf:
 ../../../../Qt/5.7/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../Qt/5.7/gcc_64/mkspecs/features/exclusive_builds.prf:
 ../../../../Qt/5.7/gcc_64/mkspecs/features/toolchain.prf:
 ../../../../Qt/5.7/gcc_64/mkspecs/features/default_pre.prf:
@@ -548,7 +559,10 @@ compiler_clean:
 
 ####### Compile
 
-main.o: ../chapter1/main.cpp 
+main.o: ../chapter1/main.cpp ../chapter1/MyList.h \
+		../chapter1/MyVector.h \
+		../chapter1/MyHeap.h \
+		../chapter1/MyRedBlackTree.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../chapter1/main.cpp
 
 MyVector.o: ../chapter1/MyVector.cpp ../chapter1/MyVector.h
@@ -559,6 +573,12 @@ MyList.o: ../chapter1/MyList.cpp ../chapter1/MyList.h
 
 MyHeap.o: ../chapter1/MyHeap.cpp ../chapter1/MyHeap.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MyHeap.o ../chapter1/MyHeap.cpp
+
+MyRedBlackTree.o: ../chapter1/MyRedBlackTree.cpp ../chapter1/MyRedBlackTree.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MyRedBlackTree.o ../chapter1/MyRedBlackTree.cpp
+
+Timer.o: ../chapter1/Timer.cpp ../chapter1/Timer.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Timer.o ../chapter1/Timer.cpp
 
 ####### Install
 

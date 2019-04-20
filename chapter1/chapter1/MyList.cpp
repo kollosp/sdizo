@@ -44,6 +44,59 @@ void MyList::insert(int value, int index)
     }
 }
 
+void MyList::remove(int index)
+{
+    if(head == nullptr) return;
+
+    MyListItem* item = head;
+    MyListItem* beforeitem = nullptr;
+
+    int i=0;
+
+    while(item->next != nullptr && i<index){
+        beforeitem = item;
+        item = item->next;
+        ++i;
+    }
+
+    MyListItem* next = item->next;
+
+    delete item;
+
+    if(beforeitem != nullptr)
+       beforeitem->next = next;
+    else head = next;
+}
+
+void MyList::pop_back()
+{
+    if(head == nullptr) return;
+
+    MyListItem* item = head;
+    MyListItem* beforeitem = nullptr;
+
+    while(item->next != nullptr){
+        beforeitem = item;
+        item = item->next;
+    }
+
+
+    delete item;
+
+    if(beforeitem != nullptr)
+       beforeitem->next = nullptr;
+    else head = nullptr;
+}
+
+void MyList::pop_front()
+{
+    if(head == nullptr) return;
+
+    MyListItem* second = head->next;
+    delete head;
+    head = second;
+}
+
 const MyListItem *MyList::getHead() const
 {
     return head;

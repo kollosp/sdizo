@@ -58,6 +58,47 @@ void MyVector::insert(int value, unsigned int index)
     data = newData;
 }
 
+void MyVector::remove(unsigned int index)
+{
+    int* newArray = new int[size-1];
+
+    int offset = 0;
+    size--;
+    for(int i=0;i<size;++i){
+        if(i == index) offset = 1;
+        newArray[i] = data[i+offset];
+    }
+
+    delete[] data;
+    data = newArray;
+}
+
+void MyVector::pop_back()
+{
+    int* newArray = new int[size-1];
+
+    size--;
+    for(int i=0;i<size;++i){
+        newArray[i] = data[i];
+    }
+
+    delete[] data;
+    data = newArray;
+}
+
+void MyVector::pop_front()
+{
+    int* newArray = new int[size-1];
+
+    size--;
+    for(int i=0;i<size;++i){
+        newArray[i] = data[i+1];
+    }
+
+    delete[] data;
+    data = newArray;
+}
+
 int MyVector::length() const
 {
     return size;

@@ -6,9 +6,13 @@ CONFIG -= qt
 SOURCES += main.cpp \
     MyVector.cpp \
     MyList.cpp \
-    MyHeap.cpp
+    MyHeap.cpp \
+    MyRedBlackTree.cpp \
+    Timer.cpp
 
 HEADERS += \
     MyVector.h \
     MyList.h \
-    MyHeap.h
+    MyHeap.h \
+    MyRedBlackTree.h \
+    Timer.h

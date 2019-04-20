@@ -31,13 +31,13 @@ public:
     void insert(int value, int index);
 
     //in specified index
-    void remove(int value, int index);
+    void remove(int index);
 
     //at the and
-    void pop_back(int value);
+    void pop_back();
 
     //at the beginnig
-    void pop_front(int value);
+    void pop_front();
 
     //return list head
     const MyListItem* getHead() const;

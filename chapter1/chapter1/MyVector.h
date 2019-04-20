@@ -12,6 +12,7 @@ class MyVector
 public:
     MyVector();
 
+
     //at the and
     void push_back(int value);
 
@@ -22,13 +23,13 @@ public:
     void insert(int value, unsigned int index);
 
     //in specified index
-    void remove(int value, unsigned int index);
+    void remove(unsigned int index);
 
     //at the and
-    void pop_back(int value);
+    void pop_back();
 
     //at the beginnig
-    void pop_front(int value);
+    void pop_front();
 
     //check if list is empty, true when empty
     const bool isEmpty() const;
