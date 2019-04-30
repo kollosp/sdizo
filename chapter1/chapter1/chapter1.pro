@@ -8,11 +8,15 @@ SOURCES += main.cpp \
     MyList.cpp \
     MyHeap.cpp \
     MyRedBlackTree.cpp \
-    Timer.cpp
+    Timer.cpp \
+    Menu.cpp \
+    TimeTests.cpp
 
 HEADERS += \
     MyVector.h \
     MyList.h \
     MyHeap.h \
     MyRedBlackTree.h \
-    Timer.h
+    Timer.h \
+    Menu.h \
+    TimeTests.h

@@ -1,0 +1,5 @@
+Rozpoczynam testy
+czasy przetwarzania listy;
+push_back; remove_back; push_front; remove_front; push_random; remove_random; contains
+88.2193; 82.9751; 0.003714; 0.004579; 82.2646; 140.039; 0.000924; 
+

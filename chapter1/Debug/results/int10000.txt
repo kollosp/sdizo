@@ -1,0 +1,5 @@
+Rozpoczynam testy
+czasy przetwarzania wektora;
+push_back;remove_back; push_front; remove_front; push_random; remove_random; contains
+0.154201; 0.152613; 0.154747; 0.151522; 0.162467; 0.152624; 3.3e-05; 
+

@@ -1,0 +1,22 @@
+Rozpoczynam testy
+ilosc testow: 100 populacja w tescie: 2000
+
+
+Tablica dynamiczna
+push_back; remove_back; push_front; remove_front; push_random; remove_random; contains
+0.088603 0.089787 0.088856 0.088865 0.097441 0.088876 0.000093 
+
+
+Lista
+push_back; remove_back; push_front; remove_front; push_random; remove_random; contains
+0.153140 0.150405 0.000515 0.000657 0.099717 0.054144 0.000129 
+
+
+Kopiec
+push; contains; pop;
+0.004918 0.702661 0.015050 
+
+
+Drzewo
+push; contains; 
+0.022685 0.016405 

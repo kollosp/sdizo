@@ -12,6 +12,10 @@ class MyVector
 public:
     MyVector();
 
+    ~MyVector();
+
+    MyVector(const MyVector& obj);
+
 
     //at the and
     void push_back(int value);

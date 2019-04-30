@@ -1,11 +1,17 @@
 #include <iostream>
 #include <vector>
-#include "MyList.h"
-#include "MyVector.h"
-#include "MyHeap.h"
-#include "MyRedBlackTree.h"
+#include <stdlib.h>
+
 #include "Timer.h"
+#include "Menu.h"
+#include "TimeTests.h"
+
 using namespace std;
+
+/*
+ * TODO: usuwanie w kopcu i w drzewie
+ */
+
 
 void listTest(){
     cout<<"=======List test======="<<endl;
@@ -128,6 +134,7 @@ void heapTest(){
     h.push(26);
 
     cout<<h<<endl;
+    return;
     /*h.popHead();
     cout<<"pop head:\n"<<h<<endl;
     h.popBack();
@@ -139,6 +146,13 @@ void heapTest(){
     cout<<"push 89:\n"<<h<<endl;
     h.remove(13);
     cout<<"remove 13:\n"<<h<<endl;
+
+    cout<<"contains(89): "<<h.contains(89)<<endl;
+    cout<<"contains(13): "<<h.contains(13)<<endl;
+    cout<<"contains(122): "<<h.contains(122)<<endl;
+    cout<<"contains(14): "<<h.contains(14)<<endl;
+    cout<<"contains(19): "<<h.contains(19)<<endl;
+    cout<<"contains(70): "<<h.contains(70)<<endl;
 }
 
 void RBTreeTest(){
@@ -147,73 +161,28 @@ void RBTreeTest(){
     int tab[] = {100,150,50,125,124,126,99,97,125,98};
 
     for(int i=0;i<10;++i){
-        cout<<"i. "<<i<<endl;
-
         tree.push(tab[i]);
-
-        cout<<tree<<endl<<endl;
-
+        //cout<<tree<<endl<<endl;
     };
 
+    cout<<tree<<endl<<endl;
     tree.pop(50);
-    cout<<tree<<endl;
+    cout<<"pop(50)\n"<<tree<<endl;
     tree.pop(97);
-    cout<<tree<<endl;
+    cout<<"pop(97)\n"<<tree<<endl;
     tree.pop(150);
-    cout<<tree<<endl;
+    cout<<"pop(150)\n"<<tree<<endl;
+    cout<<"contains(100): "<<tree.contains(100)<<endl;
+    cout<<"contains(124): "<<tree.contains(124)<<endl;
+    cout<<"contains(126): "<<tree.contains(126)<<endl;
+    cout<<"contains(99): "<<tree.contains(99)<<endl;
+    cout<<"contains(56): "<<tree.contains(56)<<endl;
 //    tree.headRotateLeft();
 //    cout<<tree<<endl;
 //    tree.headRotateRight();
 //    cout<<tree<<endl;
 }
 
-void generateInts(int max, int min, int count){
-
-    int m = max-min;
-
-    cout<<count<<endl;
-    for(int i=0;i<count;++i){
-        cout<<(rand()%m)+min<<endl;
-        cerr<<"\r generowanie liczb "<<i<<"/"<<count<<" ";
-    }
-    cerr<<"done."<<endl;
-}
-
-//function push all ints storaged in data (count) into obj.
-//it used push function
-template<typename T>
-double pushFrontElements(int* data, int count, T obj){
-    Timer tm;
-    tm.start();
-    for(int i=0;i<count;++i){
-        obj.push_front(data[i]);
-    }
-    tm.stop();
-    return tm.elapsed();
-}
-
-//function push all ints storaged in data (count) into obj.
-//it used push function
-template<typename T>
-double pushBackElements(int* data, int count, T obj){
-    Timer tm;
-    tm.start();
-    for(int i=0;i<count;++i){
-        obj.push_back(data[i]);
-    }
-    tm.stop();
-    return tm.elapsed();
-}
-
-double insertElements(int* data, int count, std::vector<int>& vec, int pos){
-    Timer tm;
-    tm.start();
-    for(int i=0;i<count;++i){
-        vec.insert(vec.begin() + pos, data[i]);
-    }
-    tm.stop();
-    return tm.elapsed();
-}
 
 
 void runTests(){
@@ -224,65 +193,44 @@ void runTests(){
     for(int i=0;i<count;++i)
         data[i] = count;
 
-    cout<<"Wczytano: "<<count<<" liczb"<<endl;
+    TimeTests tests;
 
-    {
-        MyVector vector;
-        MyList list;
-        MyHeap heap;
-        MyRedBlackTree tree;
-        std::vector<int> stdVector;
-
-        cout<<"push front"<<endl;
-        cout<<"dodawanie elementow (vector)      : "<<pushFrontElements(data, count, vector)<<"s"<<endl;
-        cout<<"dodawanie elementow (std::vector) : "<<insertElements(data,count, stdVector, 0)<<"s"<<endl;
-        cout<<"dodawanie elementow (list)        : "<<pushFrontElements(data, count, list)<<"s"<<endl;
-        cout<<"dodawanie elementow (heap)        : "<<pushFrontElements(data, count, heap)<<"s"<<endl;
-    }
-
-    {
-        MyVector vector;
-        MyList list;
-        MyHeap heap;
-        MyRedBlackTree tree;
-        std::vector<int> stdVector;
-
-        cout<<"push back"<<endl;
-        cout<<"dodawanie elementow (vector)      : "<<pushBackElements(data, count, vector)<<"s"<<endl;
-        cout<<"dodawanie elementow (std::vector) : "<<pushBackElements(data, count, stdVector)<<"s"<<endl;
-        cout<<"dodawanie elementow (list)        : "<<pushBackElements(data, count, list)<<"s"<<endl;
-        cout<<"dodawanie elementow (heap)        : ----s"<<endl;
-    }
-
-
+    tests.RBTreeTests(data,count);
+    //tests.heapTests(data, count);
+    //tests.vectorTests(data, count);
+    //tests.listTests(data, count);
 
 }
 
 int main(int argc, char *argv[])
 {
+    //heapTest();
+    //return 0;
+    //RBTreeTest();
+    //return 0;
+
     srand(time(NULL));
 
     if(argc>=2){
-        if(string(argv[1]) == "gen"){
-            int count = stoi(argv[2]);
-            generateInts(10000,0,count);
-            return 0;
-        }
-        else if(string(argv[1]) == "test"){
+        if(string(argv[1]) == "test"){
             cout<<"Rozpoczynam testy"<<endl;
 
+            //runTests();
 
-            runTests();
-
+            TimeTests tests;
+            tests.test(100, atoi(argv[2]));
             return 0;
         }
     }
+
+    Menu m;
+    m.run();
 
     //listTest();
     //vectorTest();
     //heapTest();
 
-    RBTreeTest();
+    //RBTreeTest();
     return 0;
 }
 

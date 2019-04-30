@@ -66,8 +66,13 @@ public:
     MyRedBlackTree();
     ~MyRedBlackTree();
 
+    //alias for push function
+    void push_front(int value){push(value);}
+
     void push(int value);
     void pop(int value);
+
+    void remove(int value){pop(value);}
 
     void headRotateLeft();
     void headRotateRight();
@@ -75,6 +80,8 @@ public:
     friend std::ostream& operator<<(std::ostream& str, const MyRedBlackTree& tree);
 
     Item* search(int value);
+    bool contains(int value);
+    bool containsRec(int value, MyRedBlackTree::Item * node);
 
     static void displayText(std::ostream& str, Item* node, int indent=0);
     static void displayGraph(std::ostream &str, Item* node, int indent);

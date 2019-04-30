@@ -19,6 +19,7 @@ class MyList
 
 public:
     MyList();
+    MyList(const MyList& obj);
     ~MyList();
 
     //at the and
@@ -47,6 +48,10 @@ public:
 
     //check if item exists. -1 when list doesnt contain item otherways index
     const int contains(int item) const;
+
+
+    //return size of vector
+    int length() const;
 
 private:
     //find element at index.

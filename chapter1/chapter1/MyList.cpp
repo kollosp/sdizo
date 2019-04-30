@@ -5,6 +5,27 @@ MyList::MyList()
     head = nullptr;
 }
 
+MyList::MyList(const MyList &obj)
+{
+
+    head = nullptr;
+    if(obj.head){
+        head = new MyListItem(obj.head->data);
+
+    }
+    else return;
+
+    MyListItem* buf = obj.head->next;
+    MyListItem* localBuf = head;
+
+    while(buf != nullptr){
+
+        localBuf->next = new MyListItem(buf->data);
+        localBuf = localBuf->next;
+        buf = buf->next;
+    }
+}
+
 MyList::~MyList()
 {
     MyListItem* buf = head;
@@ -34,7 +55,7 @@ void MyList::push_front(int value)
 
 void MyList::insert(int value, int index)
 {
-    MyListItem* item = findIndex(index);
+    MyListItem* item = findIndex(index-1);
 
     if(item == nullptr) head = new MyListItem(value);
     else {
@@ -126,6 +147,23 @@ const int MyList::contains(int item) const
 
 }
 
+int MyList::length() const
+{
+
+    if(head == nullptr) return 0;
+
+    MyListItem* buf = head;
+
+    int len = 0;
+    while(buf->next != nullptr){
+        buf = buf->next;
+        ++len;
+    }
+
+    return len;
+
+}
+
 MyListItem *MyList::findIndex(int index)
 {
     if(head == nullptr) return nullptr;
@@ -145,9 +183,9 @@ std::ostream &operator<<(std::ostream &str, const MyList &list)
 {
     const MyListItem* buf = list.getHead();
 
-    str<<"List: [";
+    str<<"[";
     while(buf != nullptr){
-        str<<buf->data<<", ";
+        str<<buf->data<<" -> ";
         buf = buf->next;
     }
     str<<"]";

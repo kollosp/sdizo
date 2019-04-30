@@ -192,10 +192,14 @@ void MyRedBlackTree::pop(int value)
 
     Item* parent = removedItem->parent;
 
+
+
     //1)
     //no sons
     if(removedItem->left == removedItem->right && removedItem->left == nullptr){
-        removedItem->parent->swapChild(removedItem, nullptr);
+        if(removedItem->parent)
+            removedItem->parent->swapChild(removedItem, nullptr);
+        else tree = nullptr;
         delete removedItem;
     }
     //only one son exists (right)
@@ -240,7 +244,22 @@ void MyRedBlackTree::headRotateRight()
 
 MyRedBlackTree::Item *MyRedBlackTree::search(int value)
 {
-    searchChild(tree, value);
+    return searchChild(tree, value);
+}
+
+bool MyRedBlackTree::contains(int value)
+{
+    return containsRec(value, tree);
+}
+
+bool MyRedBlackTree::containsRec(int value, MyRedBlackTree::Item * node)
+{
+    if(node == nullptr) return false;
+
+    if(node->data == value) return true;
+    else if(node->data > value) return containsRec(value, node->left);
+    else if(node->data < value) return containsRec(value, node->right);
+    else return false;
 }
 
 std::ostream &operator<<(std::ostream &str, const MyRedBlackTree &tree)
@@ -271,7 +290,14 @@ void MyRedBlackTree::displayGraph(std::ostream &str, Item* node, int indent){
         }
 
         if(node->right) str<<" /\n" << std::setw(indent) << ' ';
-        str<< node->data<<":"<<(node->color == 1 ? "B": "R")<< "\n ";
+
+        if(node->color == 1){
+
+            str<<"\e[37;40m"<<node->data<<":B"<< "\e[0m\n ";
+        }
+        else
+            str<<"\e[31;31m"<<node->data<<":R"<< "\e[0m\n ";
+
 
         if(node->left) {
             str << std::setw(indent) << ' ' <<" \\\n";

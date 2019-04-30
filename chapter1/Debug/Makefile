@@ -53,13 +53,17 @@ SOURCES       = ../chapter1/main.cpp \
 		../chapter1/MyList.cpp \
 		../chapter1/MyHeap.cpp \
 		../chapter1/MyRedBlackTree.cpp \
-		../chapter1/Timer.cpp 
+		../chapter1/Timer.cpp \
+		../chapter1/Menu.cpp \
+		../chapter1/TimeTests.cpp 
 OBJECTS       = main.o \
 		MyVector.o \
 		MyList.o \
 		MyHeap.o \
 		MyRedBlackTree.o \
-		Timer.o
+		Timer.o \
+		Menu.o \
+		TimeTests.o
 DIST          = ../../../../Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.7/gcc_64/mkspecs/common/unix.conf \
 		../../../../Qt/5.7/gcc_64/mkspecs/common/linux.conf \
@@ -208,12 +212,16 @@ DIST          = ../../../../Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		MyList.h \
 		MyHeap.h \
 		MyRedBlackTree.h \
-		Timer.h ../chapter1/main.cpp \
+		Timer.h \
+		Menu.h \
+		TimeTests.h ../chapter1/main.cpp \
 		../chapter1/MyVector.cpp \
 		../chapter1/MyList.cpp \
 		../chapter1/MyHeap.cpp \
 		../chapter1/MyRedBlackTree.cpp \
-		../chapter1/Timer.cpp
+		../chapter1/Timer.cpp \
+		../chapter1/Menu.cpp \
+		../chapter1/TimeTests.cpp
 QMAKE_TARGET  = chapter1
 DESTDIR       = 
 TARGET        = chapter1
@@ -559,7 +567,9 @@ compiler_clean:
 
 ####### Compile
 
-main.o: ../chapter1/main.cpp ../chapter1/MyList.h \
+main.o: ../chapter1/main.cpp ../chapter1/Timer.h \
+		../chapter1/Menu.h \
+		../chapter1/MyList.h \
 		../chapter1/MyVector.h \
 		../chapter1/MyHeap.h \
 		../chapter1/MyRedBlackTree.h
@@ -579,6 +589,18 @@ MyRedBlackTree.o: ../chapter1/MyRedBlackTree.cpp ../chapter1/MyRedBlackTree.h
 
 Timer.o: ../chapter1/Timer.cpp ../chapter1/Timer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Timer.o ../chapter1/Timer.cpp
+
+Menu.o: ../chapter1/Menu.cpp ../chapter1/Menu.h \
+		../chapter1/MyList.h \
+		../chapter1/MyVector.h \
+		../chapter1/MyHeap.h \
+		../chapter1/MyRedBlackTree.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Menu.o ../chapter1/Menu.cpp
+
+TimeTests.o: ../chapter1/TimeTests.cpp ../chapter1/TimeTests.h \
+		../chapter1/MyVector.h \
+		../chapter1/Timer.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o TimeTests.o ../chapter1/TimeTests.cpp
 
 ####### Install
 
