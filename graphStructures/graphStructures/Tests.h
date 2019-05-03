@@ -5,6 +5,7 @@
 #include <vector>
 #include "NeighbourLists.h"
 #include "NeighbourMatrix.h"
+#include "Algorythms.h"
 #include "Timer.h"
 
 class Tests{
@@ -42,7 +43,7 @@ double Tests::testDjiskra(T &graph, const std::vector<int>& sourceVerts)
 
 
     for(int i:sourceVerts){
-        //func(graph, i);
+        std::cout<<Algorythms::dijkstra(graph, i)<<std::endl;
     }
 
     t.stop();
@@ -52,7 +53,16 @@ double Tests::testDjiskra(T &graph, const std::vector<int>& sourceVerts)
 template<typename T>
 double Tests::testBellFord(T &graph, const std::vector<int>& sourceVerts)
 {
+    Timer t;
+    t.start();
 
+
+    for(int i:sourceVerts){
+        std::cout<<Algorythms::bellFord(graph, i)<<std::endl;
+    }
+
+    t.stop();
+    return t.elapsed();
 }
 
 

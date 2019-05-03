@@ -2,6 +2,7 @@
 #include <vector>
 #include <functional>
 #include <queue>
+#include <stdio.h>
 
 #include "NeighbourMatrix.h"
 #include "NeighbourLists.h"
@@ -42,16 +43,54 @@ void neighbourListTest(){
     cout<<"bellFord: "<<Algorythms::bellFord(m, 4)<<endl;
 }
 
-int main(void)
+
+void test(int size, int factor){
+
+    NeighbourLists nl(size);
+    NeighbourMatrix nm(size);
+
+
+    Tests::fillGraph(nl,factor);
+    Tests::fillGraph(nm,factor);
+
+}
+
+int main(int argc, char**argv)
 {
 
     srand(time(NULL));
     //neighbourMatrixTest();
     //neighbourListTest();
 
-    NeighbourMatrix m(5);
-    Tests::fillGraph(m,100);
-    std::vector<int> vec = {1,2};
-    cout<<Tests::testDjiskra(m, vec)<<endl;
+    if(argc < 3){
+        std::cout<<"wprowadz wielkosc struktury i procent wypelnienia"<<std::endl;
+        return 0;
+    }
+
+    int size = stoi(argv[1]);
+    int factor = stoi(argv[2]);
+
+    NeighbourLists m(size);
+    Tests::fillGraph(m,factor);
+
+    //wektor testowy
+    std::vector<int> vec;
+    for(int i=0;i<size;++i)
+        vec.push_back(i);
+
+    cout<<m<<endl;
+    cout<<"-------------pomiar-------------"<<endl;
+    cout<<"wielkosc: "<<size<<endl;
+    cout<<"procent wypelnienia: "<<factor<<endl;
+    double time = Tests::testBellFord(m, vec);
+    cout<<"Djiskra: "<<std::fixed<<time<<" s"<<endl;
+
+    cerr << size<<", "<<factor/100.0<<", "<<std::fixed<<time<<endl;
+
+    //time = Tests::testBellFord(m, vec);
+    //time = Tests::testDjiskra(m, vec);
+
+
+
     return 0;
 }

@@ -4,25 +4,10 @@
 #include <vector>
 #include <iostream>
 
+#include "Pair.h"
 
-template<typename T1, typename T2>
-class Pair{
-public:
-    Pair(T1 k1, T2 k2): obj1(k1), obj2(k2) {}
-    T1 obj1;
-    T2 obj2;
 
-};
 
-bool operator > (const Pair<int, int*>& p1, const Pair<int, int*>& p2){
-    return *p1.obj2 > *p2.obj2;
-}
-
-template<typename T1>
-std::ostream& operator << (std::ostream& str, const Pair<T1,int*>& v){
-    str<<v.obj1<<":"<<*v.obj2;
-    return str;
-}
 
 template<typename T>
 std::ostream& operator << (std::ostream& str, const std::vector<T>& v)
@@ -101,6 +86,11 @@ public:
 
         }
 
+        for(int& i:d){
+            if(i == 0x0FFFFFFF)
+                i = -1;
+        }
+
         return d;
     }
 
@@ -126,6 +116,12 @@ public:
                 }
             }
         }
+
+        for(int& i:d){
+            if(i == 0x0FFFFFFF)
+                i = -1;
+        }
+
 
         return d;
     }

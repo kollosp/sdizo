@@ -10,7 +10,8 @@ SOURCES += main.cpp \
     NeighbourLists.cpp \
     Tests.cpp \
     Timer.cpp \
-    Algorythms.cpp
+    Algorythms.cpp \
+    Pair.cpp
 
 HEADERS += \
     NeighbourMatrix.h \
@@ -18,4 +19,5 @@ HEADERS += \
     TimeTests.h \
     Tests.h \
     Timer.h \
-    Algorythms.h
+    Algorythms.h \
+    Pair.h

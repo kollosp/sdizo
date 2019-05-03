@@ -53,13 +53,15 @@ SOURCES       = ../graphStructures/main.cpp \
 		../graphStructures/NeighbourLists.cpp \
 		../graphStructures/Tests.cpp \
 		../graphStructures/Timer.cpp \
-		../graphStructures/Algorythms.cpp 
+		../graphStructures/Algorythms.cpp \
+		../graphStructures/Pair.cpp 
 OBJECTS       = main.o \
 		NeighbourMatrix.o \
 		NeighbourLists.o \
 		Tests.o \
 		Timer.o \
-		Algorythms.o
+		Algorythms.o \
+		Pair.o
 DIST          = ../../../../Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.7/gcc_64/mkspecs/common/unix.conf \
 		../../../../Qt/5.7/gcc_64/mkspecs/common/linux.conf \
@@ -209,12 +211,14 @@ DIST          = ../../../../Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		TimeTests.h \
 		Tests.h \
 		Timer.h \
-		Algorythms.h ../graphStructures/main.cpp \
+		Algorythms.h \
+		Pair.h ../graphStructures/main.cpp \
 		../graphStructures/NeighbourMatrix.cpp \
 		../graphStructures/NeighbourLists.cpp \
 		../graphStructures/Tests.cpp \
 		../graphStructures/Timer.cpp \
-		../graphStructures/Algorythms.cpp
+		../graphStructures/Algorythms.cpp \
+		../graphStructures/Pair.cpp
 QMAKE_TARGET  = graphStructures
 DESTDIR       = 
 TARGET        = graphStructures
@@ -563,6 +567,8 @@ compiler_clean:
 main.o: ../graphStructures/main.cpp ../graphStructures/NeighbourMatrix.h \
 		../graphStructures/NeighbourLists.h \
 		../graphStructures/Tests.h \
+		../graphStructures/Algorythms.h \
+		../graphStructures/Pair.h \
 		../graphStructures/Timer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../graphStructures/main.cpp
 
@@ -575,14 +581,20 @@ NeighbourLists.o: ../graphStructures/NeighbourLists.cpp ../graphStructures/Neigh
 Tests.o: ../graphStructures/Tests.cpp ../graphStructures/Tests.h \
 		../graphStructures/NeighbourLists.h \
 		../graphStructures/NeighbourMatrix.h \
+		../graphStructures/Algorythms.h \
+		../graphStructures/Pair.h \
 		../graphStructures/Timer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Tests.o ../graphStructures/Tests.cpp
 
 Timer.o: ../graphStructures/Timer.cpp ../graphStructures/Timer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Timer.o ../graphStructures/Timer.cpp
 
-Algorythms.o: ../graphStructures/Algorythms.cpp ../graphStructures/Algorythms.h
+Algorythms.o: ../graphStructures/Algorythms.cpp ../graphStructures/Algorythms.h \
+		../graphStructures/Pair.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Algorythms.o ../graphStructures/Algorythms.cpp
+
+Pair.o: ../graphStructures/Pair.cpp ../graphStructures/Pair.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Pair.o ../graphStructures/Pair.cpp
 
 ####### Install
 
