@@ -6,8 +6,6 @@
 #include <vector>
 #include <list>
 
-
-
 class NeighbourLists
 {
     struct ListItem{
@@ -30,8 +28,9 @@ public:
      * @param vert1
      * @param vert2
      * @param factor - wartosc (waga) polaczenia
+     * @return false - krawedz nie istniala i zostala utworzona
      */
-    void addEdge(int vert1, int vert2, int factor = 1);
+    bool addEdge(int vert1, int vert2, int factor = 1);
 
     int size() const;
 

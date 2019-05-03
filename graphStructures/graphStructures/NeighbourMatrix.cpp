@@ -29,12 +29,17 @@ NeighbourMatrix::~NeighbourMatrix()
         delete[] data;
 }
 
-void NeighbourMatrix::addEdge(int vert1, int vert2, int factor)
+bool NeighbourMatrix::addEdge(int vert1, int vert2, int factor)
 {
+    bool exist = false;
+
     if(vert1 < verts && vert2 < verts){
+        if(data[vert1][vert2] != 0) exist = true;
         data[vert1][vert2] = factor;
         data[vert2][vert1] = factor;
     }
+
+    return exist;
 }
 
 int NeighbourMatrix::size() const

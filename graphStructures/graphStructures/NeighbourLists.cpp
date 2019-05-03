@@ -13,7 +13,7 @@ NeighbourLists::~NeighbourLists()
 
 }
 
-void NeighbourLists::addEdge(int vert1, int vert2, int factor)
+bool NeighbourLists::addEdge(int vert1, int vert2, int factor)
 {
 
     bool exist = false;
@@ -40,6 +40,8 @@ void NeighbourLists::addEdge(int vert1, int vert2, int factor)
 
     if(exist==false)
         data[vert2].push_back(ListItem{vert1, factor});
+
+    return exist;
 }
 
 int NeighbourLists::size() const

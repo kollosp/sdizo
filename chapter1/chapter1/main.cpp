@@ -204,21 +204,24 @@ void runTests(){
 
 int main(int argc, char *argv[])
 {
-    //heapTest();
-    //return 0;
     //RBTreeTest();
     //return 0;
 
     srand(time(NULL));
 
     if(argc>=2){
-        if(string(argv[1]) == "test"){
+        std::string arg(argv[1]);
+        if(arg == "test"){
             cout<<"Rozpoczynam testy"<<endl;
 
             //runTests();
 
             TimeTests tests;
             tests.test(100, atoi(argv[2]));
+            return 0;
+        }
+        else if(arg == "heaptest"){
+            heapTest();
             return 0;
         }
     }

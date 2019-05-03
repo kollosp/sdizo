@@ -51,11 +51,15 @@ OBJECTS_DIR   = ./
 SOURCES       = ../graphStructures/main.cpp \
 		../graphStructures/NeighbourMatrix.cpp \
 		../graphStructures/NeighbourLists.cpp \
-		../graphStructures/MyList.cpp 
+		../graphStructures/Tests.cpp \
+		../graphStructures/Timer.cpp \
+		../graphStructures/Algorythms.cpp 
 OBJECTS       = main.o \
 		NeighbourMatrix.o \
 		NeighbourLists.o \
-		MyList.o
+		Tests.o \
+		Timer.o \
+		Algorythms.o
 DIST          = ../../../../Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.7/gcc_64/mkspecs/common/unix.conf \
 		../../../../Qt/5.7/gcc_64/mkspecs/common/linux.conf \
@@ -202,10 +206,15 @@ DIST          = ../../../../Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.7/gcc_64/mkspecs/features/lex.prf \
 		../graphStructures/graphStructures.pro NeighbourMatrix.h \
 		NeighbourLists.h \
-		MyList.h ../graphStructures/main.cpp \
+		TimeTests.h \
+		Tests.h \
+		Timer.h \
+		Algorythms.h ../graphStructures/main.cpp \
 		../graphStructures/NeighbourMatrix.cpp \
 		../graphStructures/NeighbourLists.cpp \
-		../graphStructures/MyList.cpp
+		../graphStructures/Tests.cpp \
+		../graphStructures/Timer.cpp \
+		../graphStructures/Algorythms.cpp
 QMAKE_TARGET  = graphStructures
 DESTDIR       = 
 TARGET        = graphStructures
@@ -551,7 +560,10 @@ compiler_clean:
 
 ####### Compile
 
-main.o: ../graphStructures/main.cpp ../graphStructures/NeighbourMatrix.h
+main.o: ../graphStructures/main.cpp ../graphStructures/NeighbourMatrix.h \
+		../graphStructures/NeighbourLists.h \
+		../graphStructures/Tests.h \
+		../graphStructures/Timer.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../graphStructures/main.cpp
 
 NeighbourMatrix.o: ../graphStructures/NeighbourMatrix.cpp ../graphStructures/NeighbourMatrix.h
@@ -560,8 +572,17 @@ NeighbourMatrix.o: ../graphStructures/NeighbourMatrix.cpp ../graphStructures/Nei
 NeighbourLists.o: ../graphStructures/NeighbourLists.cpp ../graphStructures/NeighbourLists.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o NeighbourLists.o ../graphStructures/NeighbourLists.cpp
 
-MyList.o: ../graphStructures/MyList.cpp ../graphStructures/MyList.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o MyList.o ../graphStructures/MyList.cpp
+Tests.o: ../graphStructures/Tests.cpp ../graphStructures/Tests.h \
+		../graphStructures/NeighbourLists.h \
+		../graphStructures/NeighbourMatrix.h \
+		../graphStructures/Timer.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Tests.o ../graphStructures/Tests.cpp
+
+Timer.o: ../graphStructures/Timer.cpp ../graphStructures/Timer.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Timer.o ../graphStructures/Timer.cpp
+
+Algorythms.o: ../graphStructures/Algorythms.cpp ../graphStructures/Algorythms.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Algorythms.o ../graphStructures/Algorythms.cpp
 
 ####### Install
 

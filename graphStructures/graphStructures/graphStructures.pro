@@ -8,9 +8,14 @@ QMAKE_CXXFLAGS += -std=c++11
 SOURCES += main.cpp \
     NeighbourMatrix.cpp \
     NeighbourLists.cpp \
-    MyList.cpp
+    Tests.cpp \
+    Timer.cpp \
+    Algorythms.cpp
 
 HEADERS += \
     NeighbourMatrix.h \
     NeighbourLists.h \
-    MyList.h
+    TimeTests.h \
+    Tests.h \
+    Timer.h \
+    Algorythms.h
