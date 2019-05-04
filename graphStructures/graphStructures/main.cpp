@@ -44,7 +44,11 @@ void neighbourListTest(){
 }
 
 
-void test(int size, int factor){
+void test(int size, int factor, int testCount){
+
+    std::vector<double> listTimes;
+    std::vector<double> matrixTimes;
+
 
     NeighbourLists nl(size);
     NeighbourMatrix nm(size);
@@ -53,16 +57,45 @@ void test(int size, int factor){
     Tests::fillGraph(nl,factor);
     Tests::fillGraph(nm,factor);
 
+    std::vector<int> tests;
+    for(int i=0;i<testCount;++i)
+        tests.push_back(rand()%size);
+
+    listTimes.push_back(Tests::testBellFord(nl, tests));
+    matrixTimes.push_back(Tests::testBellFord(nm, tests));
+
+
+    for(double&k : listTimes)
+        k/=testCount;
+
+    for(double&k : matrixTimes)
+        k/=testCount;
+
+    cout<<std::fixed<<listTimes<<", "<<matrixTimes<<endl;
+
 }
 
 int main(int argc, char**argv)
 {
 
     srand(time(NULL));
+
+    std::vector<int> sizes = {100,200,300,400,500};
+    std::vector<int> factors = {25,50,75,100};
+
+
+    //cout<<"ls, "<<listTimes<<", "<<matrixTimes<<endl;
+
+    for(int s:sizes){
+        for(int f:factors){
+            test(s,f,100);
+        }
+    }
+
     //neighbourMatrixTest();
     //neighbourListTest();
 
-    if(argc < 3){
+  /*  if(argc < 3){
         std::cout<<"wprowadz wielkosc struktury i procent wypelnienia"<<std::endl;
         return 0;
     }
@@ -76,7 +109,7 @@ int main(int argc, char**argv)
     //wektor testowy
     std::vector<int> vec;
     for(int i=0;i<size;++i)
-        vec.push_back(i);
+        vec.push_back(rand()%size);
 
     cout<<m<<endl;
     cout<<"-------------pomiar-------------"<<endl;
@@ -86,7 +119,7 @@ int main(int argc, char**argv)
     cout<<"Djiskra: "<<std::fixed<<time<<" s"<<endl;
 
     cerr << size<<", "<<factor/100.0<<", "<<std::fixed<<time<<endl;
-
+*/
     //time = Tests::testBellFord(m, vec);
     //time = Tests::testDjiskra(m, vec);
 

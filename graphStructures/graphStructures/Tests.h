@@ -43,7 +43,8 @@ double Tests::testDjiskra(T &graph, const std::vector<int>& sourceVerts)
 
 
     for(int i:sourceVerts){
-        std::cout<<Algorythms::dijkstra(graph, i)<<std::endl;
+        //std::cout<<Algorythms::dijkstra(graph, i)<<std::endl;
+        Algorythms::dijkstra(graph, i);
     }
 
     t.stop();
@@ -58,7 +59,8 @@ double Tests::testBellFord(T &graph, const std::vector<int>& sourceVerts)
 
 
     for(int i:sourceVerts){
-        std::cout<<Algorythms::bellFord(graph, i)<<std::endl;
+        //std::cout<<Algorythms::bellFord(graph, i)<<std::endl;
+        Algorythms::bellFord(graph, i);
     }
 
     t.stop();
