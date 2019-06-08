@@ -87,17 +87,22 @@ int MyHeap::popBack(){
 
 void MyHeap::remove(int index)
 {
+    if(index < 0) return;
     if(heapSize == 0){
         popHead();
         return;
     }
+    std::cout<<"+++++++++++++++++++"<<std::endl;
 
     std::swap(data[index], data[heapSize-1]);
     heapSize--;
+    //std::cout<<*this<<std::endl;
 
     if(data[index] > data[(index-1)/2])
         fixFromBottom(index);
     else fixFromTop(index);
+
+    //std::cout<<"+++++++++++++++++++"<<std::endl;
 }
 
 int &MyHeap::operator[](unsigned int index)

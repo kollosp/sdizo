@@ -2,6 +2,7 @@
 #define NEIGHBOURMATRIX_H
 
 #include <iostream>
+#include <fstream>
 #include <iomanip>
 #include <vector>
 
@@ -22,7 +23,8 @@ public:
      * @brief NeighbourMatrix
      * @param verts - ilosc wierzcholkow jak ma miec graf
      */
-    NeighbourMatrix(int verts);
+    NeighbourMatrix(int verts = 10);
+
 
     ~NeighbourMatrix();
 
@@ -33,9 +35,11 @@ public:
      * @param factor - wartosc (waga) polaczenia
      * @return false - krawedz nie istniala i zostala utworzona
      */
-    bool addEdge(int vert1, int vert2, int factor = 1);
+    bool addEdge(int vert1, int vert2, int factor = 1, bool bidirectional=true);
 
     int size() const;
+
+    void init(int verts);
 
     /**
      * @brief edge zwraca wartosc w komorce data[vert1][vert2]
@@ -63,6 +67,7 @@ public:
      * w komorach [i, i+1] znajduja sie numery wierzcholkow tworzacych krawedz
      */
     std::vector<int> edges() const;
+
 };
 
 std::ostream& operator << (std::ostream& str, const NeighbourMatrix& matrix);

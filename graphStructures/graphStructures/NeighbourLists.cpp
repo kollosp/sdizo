@@ -13,9 +13,17 @@ NeighbourLists::~NeighbourLists()
 
 }
 
-bool NeighbourLists::addEdge(int vert1, int vert2, int factor)
+void NeighbourLists::init(int verts)
 {
+    delete[] data;
 
+    this->verts = verts;
+
+    data = new std::list<ListItem>[verts];
+}
+
+bool NeighbourLists::addEdge(int vert1, int vert2, int factor, int bidirectional)
+{
     bool exist = false;
     for(ListItem& i: data[vert1]){
         if(i.vert == vert2){
@@ -29,6 +37,7 @@ bool NeighbourLists::addEdge(int vert1, int vert2, int factor)
 
     //polaczenia symetryczne wiec trzeba wywolac procedure jeszze dla odwroconyh argumentow
 
+    if(bidirectional == false) return exist;
 
     exist = false;
     for(ListItem& i: data[vert2]){

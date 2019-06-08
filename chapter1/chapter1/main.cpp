@@ -6,6 +6,8 @@
 #include "Menu.h"
 #include "TimeTests.h"
 
+#include <unistd.h>
+
 using namespace std;
 
 /*
@@ -134,7 +136,7 @@ void heapTest(){
     h.push(26);
 
     cout<<h<<endl;
-    return;
+    //return;
     /*h.popHead();
     cout<<"pop head:\n"<<h<<endl;
     h.popBack();
@@ -204,6 +206,15 @@ void runTests(){
 
 int main(int argc, char *argv[])
 {
+    //heapTest();
+    //return 0;
+
+    /*Timer tm;
+    tm.start();
+    usleep(1000);
+    tm.stop();
+    cout<<tm.elapsed()<<endl;
+    return 0;*/
     //RBTreeTest();
     //return 0;
 
@@ -217,7 +228,13 @@ int main(int argc, char *argv[])
             //runTests();
 
             TimeTests tests;
-            tests.test(100, atoi(argv[2]));
+
+            std::vector<int> populations = {1000,2000,5000,10000,20000,50000};
+            //std::vector<int> populations = {1000,2000};
+
+            for(int p:populations)
+                tests.test(100, p);
+
             return 0;
         }
         else if(arg == "heaptest"){

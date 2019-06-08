@@ -11,7 +11,8 @@ SOURCES += main.cpp \
     Tests.cpp \
     Timer.cpp \
     Algorythms.cpp \
-    Pair.cpp
+    Pair.cpp \
+    Menu.cpp
 
 HEADERS += \
     NeighbourMatrix.h \
@@ -20,4 +21,5 @@ HEADERS += \
     Tests.h \
     Timer.h \
     Algorythms.h \
-    Pair.h
+    Pair.h \
+    Menu.h

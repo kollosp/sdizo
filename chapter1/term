@@ -1,0 +1,128 @@
+Rozpoczynam testy
+ilosc testow: 10 populacja w tescie: 1000
+
+
+Tablica dynamiczna
+push_back; remove_back; push_front; remove_front; push_random; remove_random; contains
+0.003474 0.003427 0.003085 0.002700 0.002775 0.002425 0.000005 
+
+
+Lista
+push_back; remove_back; push_front; remove_front; push_random; remove_random; contains
+0.002818 0.002356 0.000026 0.000030 0.001807 0.000963 0.000007 
+
+
+Kopiec
+push; contains; pop;
+0.000231 0.016797 0.000667 
+
+
+Drzewo
+push; contains; 
+0.001038 0.000727 
+ilosc testow: 10 populacja w tescie: 2000
+
+
+Tablica dynamiczna
+push_back; remove_back; push_front; remove_front; push_random; remove_random; contains
+0.008686 0.009029 0.009128 0.008937 0.009940 0.008818 0.000009 
+
+
+Lista
+push_back; remove_back; push_front; remove_front; push_random; remove_random; contains
+0.014618 0.014231 0.000050 0.000063 0.009632 0.005243 0.000012 
+
+
+Kopiec
+push; contains; pop;
+0.000495 0.069448 0.001487 
+
+
+Drzewo
+push; contains; 
+0.002344 0.001709 
+ilosc testow: 10 populacja w tescie: 5000
+
+
+Tablica dynamiczna
+push_back; remove_back; push_front; remove_front; push_random; remove_random; contains
+0.054487 0.055427 0.055407 0.054651 0.059097 0.054452 0.000023 
+
+
+Lista
+push_back; remove_back; push_front; remove_front; push_random; remove_random; contains
+0.111835 0.108554 0.000128 0.000169 0.075363 0.049560 0.000032 
+
+
+Kopiec
+push; contains; pop;
+0.001315 0.459342 0.004323 
+
+
+Drzewo
+push; contains; 
+0.006646 0.005045 
+ilosc testow: 10 populacja w tescie: 10000
+
+
+Tablica dynamiczna
+push_back; remove_back; push_front; remove_front; push_random; remove_random; contains
+0.224361 0.225379 0.223223 0.222626 0.241203 0.228757 0.000046 
+
+
+Lista
+push_back; remove_back; push_front; remove_front; push_random; remove_random; contains
+0.661179 0.646051 0.000337 0.000414 0.446358 0.281033 0.000072 
+
+
+Kopiec
+push; contains; pop;
+0.002898 1.932835 0.009855 
+
+
+Drzewo
+push; contains; 
+0.022605 0.016166 
+ilosc testow: 10 populacja w tescie: 20000
+
+
+Tablica dynamiczna
+push_back; remove_back; push_front; remove_front; push_random; remove_random; contains
+1.061010 1.092030 0.993779 1.064020 1.177994 1.125008 0.000119 
+
+
+Lista
+push_back; remove_back; push_front; remove_front; push_random; remove_random; contains
+3.983571 3.608277 0.000765 0.001027 2.621249 1.608724 0.000139 
+
+
+Kopiec
+push; contains; pop;
+0.005637 7.484912 0.020143 
+
+
+Drzewo
+push; contains; 
+0.050352 0.045251 
+ilosc testow: 10 populacja w tescie: 50000
+
+
+Tablica dynamiczna
+push_back; remove_back; push_front; remove_front; push_random; remove_random; contains
+5.993930 5.976760 6.016149 6.298418 6.777101 6.101354 0.000223 
+
+
+Lista
+push_back; remove_back; push_front; remove_front; push_random; remove_random; contains
+40.437654 35.380480 0.002903 0.003913 24.335201 14.150058 0.000324 
+
+
+Kopiec
+push; contains; pop;
+0.015210 46.842589 0.062353 
+
+
+Drzewo
+push; contains; 
+0.121463 0.108969 
+

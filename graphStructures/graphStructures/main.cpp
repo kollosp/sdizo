@@ -1,14 +1,4 @@
-#include <iostream>
-#include <vector>
-#include <functional>
-#include <queue>
-#include <stdio.h>
-
-#include "NeighbourMatrix.h"
-#include "NeighbourLists.h"
-
-#include "Tests.h"
-#include "Algorythms.h"
+#include "Menu.h"
 
 using namespace std;
 
@@ -24,10 +14,15 @@ void neighbourMatrixTest(){
     //m.addEdge(4,3);
     //m.addEdge(2,4);
 
+    std::vector<int> p;
+    std::vector<int> d;
+
     cout<<"macierz sasiedztwa. poszukiwania dla wezla 4"<<endl;
     cout<<m<<endl;
-    cout<<"dijkstra: "<<Algorythms::dijkstra(m, 4)<<endl;
-    cout<<"bellFord: "<<Algorythms::bellFord(m, 4)<<endl;
+    Algorythms::dijkstra(m, 4, p, d);
+    cout<<"dijkstra: \n"<<d<<endl<<p<<std::endl;
+    Algorythms::bellFord(m, 4, p, d);
+    cout<<"bellFord: \n"<<d<<endl<<p<<std::endl;
 }
 
 void neighbourListTest(){
@@ -37,10 +32,38 @@ void neighbourListTest(){
     m.addEdge(2,3);
     m.addEdge(3,4);
 
+
+    std::vector<int> p;
+    std::vector<int> d;
+
     cout<<"lista sasiadow. poszukiwania dla wezla 4"<<endl;
     cout<<m<<endl;
-    cout<<"dijkstra: "<<Algorythms::dijkstra(m, 4)<<endl;
-    cout<<"bellFord: "<<Algorythms::bellFord(m, 4)<<endl;
+    Algorythms::dijkstra(m, 4, p, d);
+    cout<<"dijkstra: \n"<<d<<endl<<p<<std::endl;
+    Algorythms::bellFord(m, 4, p, d);
+    cout<<"bellFord: \n"<<d<<endl<<p<<std::endl;
+}
+
+void primeTest(){
+    NeighbourMatrix m;
+    Algorythms::fromFile(m, "1.txt");
+    NeighbourLists tree;
+
+    std::cout<<m<<std::endl;
+    std::vector<int> vec = Algorythms::sortedEdges(m);
+    std::cout<<vec<<", "<<m.edge(vec[0], vec[1])<<std::endl;
+    Algorythms::prime(m, tree, 4);
+    std::cout<<tree<<std::endl;
+}
+
+void kruskalTest(){
+    NeighbourMatrix m;
+    Algorythms::fromFile(m, "1.txt", true);
+    NeighbourLists tree;
+
+    std::cout<<m<<std::endl;
+    Algorythms::kruskal(m, tree);
+    std::cout<<tree<<std::endl;
 }
 
 
@@ -61,8 +84,8 @@ void test(int size, int factor, int testCount){
     for(int i=0;i<testCount;++i)
         tests.push_back(rand()%size);
 
-    listTimes.push_back(Tests::testBellFord(nl, tests));
-    matrixTimes.push_back(Tests::testBellFord(nm, tests));
+    listTimes.push_back(Tests::testDjiskra(nl, tests));
+    matrixTimes.push_back(Tests::testDjiskra(nm, tests));
 
 
     for(double&k : listTimes)
@@ -78,17 +101,41 @@ void test(int size, int factor, int testCount){
 int main(int argc, char**argv)
 {
 
+    //kruskalTest(); return 0;
+
+    NeighbourMatrix nm(5);
+    nm.addEdge(0, 3, 10, false);
+    std::cout<<nm<<std::endl;
+    Algorythms::toFile(nm, "file1.matrix");
+    nm.init(15);
+    std::cout<<nm<<std::endl;
+
+
+    NeighbourLists nl(5);
+    nl.addEdge(0, 3, 10, false );
+    std::cout<<nl<<std::endl;
+    nl.init(15);
+    std::cout<<nl<<std::endl;
+
+    NeighbourMatrix nm2;
+
+    Algorythms::fromFile(nm2, "file1.matrix");
+    std::cout<<nm2<<std::endl;
+
+    Menu m;
+    m.run();
+    return 0;
+
     srand(time(NULL));
 
+    //testy wyszukiwania sciezek w grafach
     std::vector<int> sizes = {100,200,300,400,500};
     std::vector<int> factors = {25,50,75,100};
 
 
-    //cout<<"ls, "<<listTimes<<", "<<matrixTimes<<endl;
-
     for(int s:sizes){
         for(int f:factors){
-            test(s,f,100);
+            test(s,f,5);
         }
     }
 

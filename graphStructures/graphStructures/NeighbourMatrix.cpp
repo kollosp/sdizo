@@ -3,6 +3,7 @@
 
 NeighbourMatrix::NeighbourMatrix(int verts)
 {
+
     this->verts = verts;
     data = new int*[this->verts];
 
@@ -15,6 +16,7 @@ NeighbourMatrix::NeighbourMatrix(int verts)
             data[i][j]=0;
         }
     }
+
 }
 
 NeighbourMatrix::~NeighbourMatrix()
@@ -29,14 +31,16 @@ NeighbourMatrix::~NeighbourMatrix()
         delete[] data;
 }
 
-bool NeighbourMatrix::addEdge(int vert1, int vert2, int factor)
+bool NeighbourMatrix::addEdge(int vert1, int vert2, int factor, bool bidirectional)
 {
     bool exist = false;
 
     if(vert1 < verts && vert2 < verts){
         if(data[vert1][vert2] != 0) exist = true;
         data[vert1][vert2] = factor;
-        data[vert2][vert1] = factor;
+
+        if(bidirectional)
+            data[vert2][vert1] = factor;
     }
 
     return exist;
@@ -45,6 +49,27 @@ bool NeighbourMatrix::addEdge(int vert1, int vert2, int factor)
 int NeighbourMatrix::size() const
 {
     return verts;
+}
+
+void NeighbourMatrix::init(int verts)
+{
+    for(int i=0;i<this->verts;++i){
+        delete data[i];
+    }
+    delete data;
+
+    this->verts = verts;
+    data = new int*[this->verts];
+
+    for(int i=0;i<this->verts;++i){
+        data[i] = new int[verts];
+    }
+
+    for(int i=0;i<this->verts;++i){
+        for(int j=0;j<verts;++j){
+            data[i][j]=0;
+        }
+    }
 }
 
 int NeighbourMatrix::edge(int vert1, int vert2) const

@@ -161,7 +161,7 @@ void Menu::heapRun()
 
         case 3:
             value = readInt(" Podaj wartosc: ");
-            heap.remove(value);
+            heap.remove(heap.contains(value));
             std::cout<<heap<<std::endl;
             pause();
             break;

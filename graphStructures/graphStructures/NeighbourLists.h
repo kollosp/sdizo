@@ -20,8 +20,10 @@ class NeighbourLists
     NeighbourLists& operator=(const NeighbourLists&);
 
 public:
-    NeighbourLists(int verts);
+    NeighbourLists(int verts=10);
     ~NeighbourLists();
+
+    void init(int verts);
 
     /**
      * @brief addEdge funkcja tworzy krawedz pomiedzy wyznazonymi werzcholkami
@@ -30,7 +32,7 @@ public:
      * @param factor - wartosc (waga) polaczenia
      * @return false - krawedz nie istniala i zostala utworzona
      */
-    bool addEdge(int vert1, int vert2, int factor = 1);
+    bool addEdge(int vert1, int vert2, int factor = 1, int bidirectional=true);
 
     int size() const;
 

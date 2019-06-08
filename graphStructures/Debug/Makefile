@@ -54,14 +54,16 @@ SOURCES       = ../graphStructures/main.cpp \
 		../graphStructures/Tests.cpp \
 		../graphStructures/Timer.cpp \
 		../graphStructures/Algorythms.cpp \
-		../graphStructures/Pair.cpp 
+		../graphStructures/Pair.cpp \
+		../graphStructures/Menu.cpp 
 OBJECTS       = main.o \
 		NeighbourMatrix.o \
 		NeighbourLists.o \
 		Tests.o \
 		Timer.o \
 		Algorythms.o \
-		Pair.o
+		Pair.o \
+		Menu.o
 DIST          = ../../../../Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.7/gcc_64/mkspecs/common/unix.conf \
 		../../../../Qt/5.7/gcc_64/mkspecs/common/linux.conf \
@@ -212,13 +214,15 @@ DIST          = ../../../../Qt/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		Tests.h \
 		Timer.h \
 		Algorythms.h \
-		Pair.h ../graphStructures/main.cpp \
+		Pair.h \
+		Menu.h ../graphStructures/main.cpp \
 		../graphStructures/NeighbourMatrix.cpp \
 		../graphStructures/NeighbourLists.cpp \
 		../graphStructures/Tests.cpp \
 		../graphStructures/Timer.cpp \
 		../graphStructures/Algorythms.cpp \
-		../graphStructures/Pair.cpp
+		../graphStructures/Pair.cpp \
+		../graphStructures/Menu.cpp
 QMAKE_TARGET  = graphStructures
 DESTDIR       = 
 TARGET        = graphStructures
@@ -564,7 +568,8 @@ compiler_clean:
 
 ####### Compile
 
-main.o: ../graphStructures/main.cpp ../graphStructures/NeighbourMatrix.h \
+main.o: ../graphStructures/main.cpp ../graphStructures/Menu.h \
+		../graphStructures/NeighbourMatrix.h \
 		../graphStructures/NeighbourLists.h \
 		../graphStructures/Tests.h \
 		../graphStructures/Algorythms.h \
@@ -595,6 +600,15 @@ Algorythms.o: ../graphStructures/Algorythms.cpp ../graphStructures/Algorythms.h 
 
 Pair.o: ../graphStructures/Pair.cpp ../graphStructures/Pair.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Pair.o ../graphStructures/Pair.cpp
+
+Menu.o: ../graphStructures/Menu.cpp ../graphStructures/Menu.h \
+		../graphStructures/NeighbourMatrix.h \
+		../graphStructures/NeighbourLists.h \
+		../graphStructures/Tests.h \
+		../graphStructures/Algorythms.h \
+		../graphStructures/Pair.h \
+		../graphStructures/Timer.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Menu.o ../graphStructures/Menu.cpp
 
 ####### Install
 

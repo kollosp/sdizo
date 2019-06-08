@@ -38,13 +38,17 @@ void Tests::fillGraph(T &graph, int fillFactor)
 template<typename T>
 double Tests::testDjiskra(T &graph, const std::vector<int>& sourceVerts)
 {
+
+    std::vector<int> p;
+    std::vector<int> d;
+
     Timer t;
     t.start();
 
 
     for(int i:sourceVerts){
         //std::cout<<Algorythms::dijkstra(graph, i)<<std::endl;
-        Algorythms::dijkstra(graph, i);
+        Algorythms::dijkstra(graph, i, p, d);
     }
 
     t.stop();
@@ -54,13 +58,16 @@ double Tests::testDjiskra(T &graph, const std::vector<int>& sourceVerts)
 template<typename T>
 double Tests::testBellFord(T &graph, const std::vector<int>& sourceVerts)
 {
+    std::vector<int> p;
+    std::vector<int> d;
+
     Timer t;
     t.start();
 
 
     for(int i:sourceVerts){
         //std::cout<<Algorythms::bellFord(graph, i)<<std::endl;
-        Algorythms::bellFord(graph, i);
+        Algorythms::bellFord(graph, i, p, d);
     }
 
     t.stop();
