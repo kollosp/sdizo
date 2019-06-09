@@ -84,8 +84,8 @@ void test(int size, int factor, int testCount){
     for(int i=0;i<testCount;++i)
         tests.push_back(rand()%size);
 
-    listTimes.push_back(Tests::testDjiskra(nl, tests));
-    matrixTimes.push_back(Tests::testDjiskra(nm, tests));
+    listTimes.push_back(Tests::testBellFord(nl, tests));
+    matrixTimes.push_back(Tests::testBellFord(nm, tests));
 
 
     for(double&k : listTimes)
@@ -100,42 +100,22 @@ void test(int size, int factor, int testCount){
 
 int main(int argc, char**argv)
 {
-
-    //kruskalTest(); return 0;
-
-    NeighbourMatrix nm(5);
-    nm.addEdge(0, 3, 10, false);
-    std::cout<<nm<<std::endl;
-    Algorythms::toFile(nm, "file1.matrix");
-    nm.init(15);
-    std::cout<<nm<<std::endl;
-
-
-    NeighbourLists nl(5);
-    nl.addEdge(0, 3, 10, false );
-    std::cout<<nl<<std::endl;
-    nl.init(15);
-    std::cout<<nl<<std::endl;
-
-    NeighbourMatrix nm2;
-
-    Algorythms::fromFile(nm2, "file1.matrix");
-    std::cout<<nm2<<std::endl;
-
-    Menu m;
-    m.run();
-    return 0;
-
     srand(time(NULL));
 
+    /*
+    Menu m;
+    m.run();
+    return 0;*/
+
+
     //testy wyszukiwania sciezek w grafach
-    std::vector<int> sizes = {100,200,300,400,500};
+    std::vector<int> sizes = {20,40,60,80,100};
     std::vector<int> factors = {25,50,75,100};
 
 
     for(int s:sizes){
         for(int f:factors){
-            test(s,f,5);
+            test(s,f,100);
         }
     }
 

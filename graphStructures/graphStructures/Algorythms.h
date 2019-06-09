@@ -190,7 +190,7 @@ public:
 
     template<typename T>
     static void fillGraph(T &graph, int fillFactor){
-        int edges = (graph.size()*(graph.size()-1)) * fillFactor/100.0;
+        int edges = ((float)graph.size()*(graph.size()-1)) * fillFactor/100.0;
         int size = graph.size();
 
         for(int i=0;i<edges;){

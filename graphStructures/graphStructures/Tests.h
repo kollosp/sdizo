@@ -18,7 +18,49 @@ public:
 
     template<typename T>
     static double testBellFord(T &graph, const std::vector<int>& sourceVerts);
+
+    template<typename T>
+    static double testPrime(T &graph, const std::vector<int>& sourceVerts);
+
+    template<typename T>
+    static double testKruskal(T &graph, const std::vector<int>& sourceVerts);
 };
+
+template<typename T>
+double Tests::testKruskal(T &graph, const std::vector<int> &sourceVerts)
+{
+    Timer t;
+    t.start();
+
+
+    for(int i:sourceVerts){
+        //std::cout<<Algorythms::dijkstra(graph, i)<<std::endl;
+        NeighbourMatrix tree;
+        Algorythms::kruskal(graph, tree);
+    }
+
+    t.stop();
+    return t.elapsed();
+}
+
+template<typename T>
+double Tests::testPrime(T &graph, const std::vector<int> &sourceVerts)
+{
+
+     Timer t;
+     t.start();
+
+
+     for(int i:sourceVerts){
+         //std::cout<<Algorythms::dijkstra(graph, i)<<std::endl;
+         NeighbourMatrix tree;
+         Algorythms::prime(graph, tree, i);
+     }
+
+     t.stop();
+     return t.elapsed();
+
+}
 
 template<typename T>
 void Tests::fillGraph(T &graph, int fillFactor)

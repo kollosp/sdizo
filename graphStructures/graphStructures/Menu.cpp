@@ -13,12 +13,12 @@ void Menu::fromFile()
     std::cout<<"podaj sciezke do pliku: ";
     std::cin >> file;
 
-    bool bidirectional = false;
+    char bidirectional = 'N';
     std::cout<<"Wymys graf nieskierowany(N/T): ";
-    //std::cin >> bidirectional;
+    std::cin >> bidirectional;
 
-    Algorythms::fromFile(graphList, file, bidirectional);
-    Algorythms::fromFile(graphMatrix, file, bidirectional);
+    Algorythms::fromFile(graphList, file, bidirectional == 'N' ? 0:1);
+    Algorythms::fromFile(graphMatrix, file, bidirectional == 'N' ? 0:1);
 
     std::cout<<"Zaladowano"<<std::endl;
     pause();
